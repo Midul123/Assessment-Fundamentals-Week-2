@@ -1,34 +1,15 @@
+"""
+TASK THREE
+
+"""
+# pylint: disable=too-few-public-methods
 
 from datetime import date
-"""
-Finally, let's create a `Marking` class that will help us to mark assessments.
-
-## 1. Marking
-
-In `task_three.py` you'll find the beginnings of a `Marking` class. Update it to have the following:
-
-- `__init__(self, quiz: Quiz)`
-  - This method should take a `Quiz` object and store it in a private variable called `_quiz`.
-- `mark(self) -> int`
-  - This method should return the total score for the assessment as a percentage, rounded to zero decimal places (i.e. an `int`).
-  - Each correct answer is worth a single point
-  - This function must **not** throw any errors
-- `generate_assessment(self) -> Assessment`
-  - This should return an instance of an `Assessment` of the correct subclass with the correct name and score.
-    - e.g. If the quiz is a `multiple-choice` then this should return a `MultipleChoiceAssessment`. 
-    If it is a `technical` quiz then this should return a `TechnicalAssessment` etc
-
-A quiz can contain any number of questions from 0 to 100.
-
-## Note
-
-Due to the way that that default arguments are stored in Python, you should not use mutable default arguments in your function signature. This means that **you should not use `[]` or `{}` as default arguments** in your functions as **this will break the tests.**
-
-
-"""
 
 
 class Trainee:
+    """TRAINEE CLASS"""
+
     def __init__(self, name: str, email: str, date_of_birth: date):
         self.name = name
         self.email = email
@@ -36,21 +17,25 @@ class Trainee:
         self.assessments = []
 
     def get_age(self):
+        """METHOD TO GET AGE"""
         today = date.today()
         return today.year - self.date_of_birth.year
 
     def add_assessment(self, assessment):
+        """METHOD TO ADD ASSESSMENT"""
         if not isinstance(assessment, Assessment):
             raise TypeError("Invalid type of assessment")
         self.assessments.append(assessment)
 
     def get_assessment(self, name: str):
+        """METHOD TO GET ASSESSMENT"""
         for assessment in self.assessments:
             if assessment.name == name:
                 return assessment
         return None
 
     def get_assessment_of_type(self, type: str) -> list:
+        """METHOD FOR TYPES"""
         count = []
         for assessment in self.assessments:
             if assessment.type == type:
@@ -59,6 +44,8 @@ class Trainee:
 
 
 class Assessment:
+    """ASSESSMENT CLASS"""
+
     def __init__(self, name: str, type: str, score: float):
         types = ["multiple-choice", "technical", "presentation"]
         self.name = name
@@ -71,33 +58,43 @@ class Assessment:
 
 
 class MultipleChoiceAssessment(Assessment):
+    """CHILD CLASS"""
+
     def __init__(self, name: str, score: int):
         type = "multiple-choice"
         super().__init__(name, type, score)
 
     def calculate_score(self):
+        """CALCULATE SCORE BASED ON POINTS GIVEN"""
         return self.score*0.70
 
 
 class TechnicalAssessment(Assessment):
+    """CHILD CLASS"""
+
     def __init__(self, name: str, score: int):
         type = "technical"
         super().__init__(name, type, score)
 
     def calculate_score(self):
+        """CALCULATE SCORE BASED ON POINTS GIVEN"""
         return self.score
 
 
 class PresentationAssessment(Assessment):
+    """CHILD CLASS"""
+
     def __init__(self, name: str, score: int):
         type = "presentation"
         super().__init__(name, type, score)
 
     def calculate_score(self):
+        """CALCULATE SCORE BASED ON POINTS GIVEN"""
         return self.score*0.60
 
 
 class Question:
+    """CLASS FOR QUESTIONS"""
 
     def __init__(self, question: str, chosen_answer: str, correct_answer: str):
         self.question = question
@@ -106,6 +103,7 @@ class Question:
 
 
 class Quiz:
+    """CLASS FOR QUIZ"""
 
     def __init__(self, questions: list, name: str, type: str):
         self.questions = questions
@@ -114,11 +112,13 @@ class Quiz:
 
 
 class Marking:
+    """CLASS FOR MARKING"""
 
     def __init__(self, quiz: Quiz) -> None:
         self._quiz = quiz
 
     def mark(self):
+        """CALCULATE MARKS"""
         total = 0
         if len(self._quiz.questions) == 0:
             return total
@@ -128,6 +128,7 @@ class Marking:
         return (total/len(self._quiz.questions)) * 100
 
     def generate_assessment(self) -> Assessment:
+        """GENERATE ASSESSMENT TYPE"""
         if self._quiz.type == "multiple-choice":
             assessment = MultipleChoiceAssessment(self._quiz.name, self.mark())
         if self._quiz.type == "technical":
