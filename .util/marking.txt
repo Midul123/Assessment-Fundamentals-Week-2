@@ -1,16 +1,24 @@
 ============================= test session starts ==============================
 platform linux -- Python 3.12.11, pytest-8.4.1, pluggy-1.6.0
 rootdir: /home/runner/work/Assessment-Fundamentals-Week-2/Assessment-Fundamentals-Week-2
-collected 0 items / 3 errors
+collected 9 items / 2 errors
 
-!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
-============================== 3 errors in 0.11s ===============================
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+============================== 2 errors in 0.11s ===============================
 ************* Module task_one
+Level-1/task_one.py:16:0: C0301: Line too long (110/100) (line-too-long)
+Level-1/task_one.py:17:0: C0301: Line too long (108/100) (line-too-long)
+Level-1/task_one.py:32:0: C0301: Line too long (262/100) (line-too-long)
 Level-1/task_one.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-Level-1/task_one.py:6:14: E0602: Undefined variable 'Trainee' (undefined-variable)
-Level-1/task_one.py:9:27: E0602: Undefined variable 'Assessment' (undefined-variable)
-Level-1/task_one.py:11:27: E0602: Undefined variable 'Assessment' (undefined-variable)
-Level-1/task_one.py:13:27: E0602: Undefined variable 'Assessment' (undefined-variable)
+Level-1/task_one.py:3:0: W0105: String statement has no effect (pointless-string-statement)
+Level-1/task_one.py:38:0: C0115: Missing class docstring (missing-class-docstring)
+Level-1/task_one.py:45:4: C0116: Missing function or method docstring (missing-function-docstring)
+Level-1/task_one.py:49:4: C0116: Missing function or method docstring (missing-function-docstring)
+Level-1/task_one.py:52:4: C0116: Missing function or method docstring (missing-function-docstring)
+Level-1/task_one.py:59:0: C0115: Missing class docstring (missing-class-docstring)
+Level-1/task_one.py:60:34: W0622: Redefining built-in 'type' (redefined-builtin)
+Level-1/task_one.py:59:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+Level-1/task_one.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
 ************* Module task_two
 Level-2/task_two.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 Level-2/task_two.py:19:14: E0602: Undefined variable 'Trainee' (undefined-variable)
@@ -30,5 +38,5 @@ Level-3/task_three.py:35:23: W0621: Redefining name 'quiz' from outer scope (lin
 Level-3/task_three.py:33:0: R0903: Too few public methods (0/2) (too-few-public-methods)
 
 ------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+Your code has been rated at 3.33/10 (previous run: 3.33/10, +0.00)
 
